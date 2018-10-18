@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .button_class{
+            background-color: lightskyblue;
+        }
+        .radio{
+            
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Trivia Night</h2>
+    <h4 id='category_name'></h4>
+
+    <label class="container">One
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Two
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Three
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Four
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <p id='all_info'></p>
+    <button type='button' class='button_class' id='button_1'>100
+        <p id='question'></p>
+        <p><input type='' class='radio'></p> 
+    </button>
+    <button type='button' id='button_2'>200
+   
+    </button>
+    <button type='button' id='button_3'>300</button>
+    <button type='button' id='button_4'>400</button>
+    <button type='button' id='button_5'>500</button>
+
+    <script>
+    
+        $(document).ready(function(){
+            $.get("https://opentdb.com/api.php?amount=5&category=17&difficulty=medium&type=multiple", displayQuestions)
+            var answers_array = []
+            function combineAnswers(data){
+                $(".button_class").append(data.results[0].incorrect_answers, data.results[0].correct_answer)
+            }
+            function displayQuestions(data){
+                
+                $('#category_name').append(data.results[0].category)
+                $('#button_1').click(function(){
+                    $('#button_1').html(data.results[0].question)
+                    $('#button_1').append(data.results[0].incorrect_answers)
+                    $('.button_class').css("")
+                    //$('.button_class').html("radio")
+                })
+                //console.log(data.results[0].category);
+                //for (var i = 0; i < data.results.length; i++)
+                    $('#all_info').append(data.results[i])
+                };
+            })
+    //$('#button_1').click(function() {
+//    $('#button_1').append(data[0].category);
+//});
+    </script>
+
+
+
+</body>
+</html>
