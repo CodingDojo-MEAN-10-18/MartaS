@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 10em;
+        }
+    </style>
+    <title>Game of Thrones</title>
+</head>
+<body>
+    <h2>Game of Thrones</h2>
+    <img src="stark.jpg" id='stark' alt="stark house image" width=250 height=250>
+    <img src="targaryen.jpg" id='targaryen' alt="targaryen house image" width=250 height=250>
+    <img src="lannister.jpg" id='lannister' alt="lannister house image" width=250 height=250>
+    <img src="baratheon.png" id='baratheon' alt="baratheon house image" width=250 height=250>
+    
+    <h5>House Details</h5>
+    <p>Name: <span id='name'></span></p>
+    <p>Words: <span id='words'></span></p>
+    <p>Titles: <span id='titles'></span></p> 
+    <script>
+        $(document).ready(function(){
+            $.get("https://anapioficeandfire.com/api/houses/362", displayStark)
+            function displayStark(data) {
+                console.log(data.name)
+                $('#stark').click(function() {
+                    $('#name').empty().append(data.name);
+                    $('#words').empty().append(data.words)
+                    $('#titles').empty().append(data.titles)
+                });
+            };
+
+            $.get("https://anapioficeandfire.com/api/houses/378", displayTargaryen)
+            function displayTargaryen(data) {
+                console.log(data.name)
+                $('#targaryen').click(function() {
+                    $('#name').empty().append(data.name);
+                    $('#words').empty().append(data.words)
+                    $('#titles').empty().append(data.titles)
+                });
+            };
+
+            $.get("https://anapioficeandfire.com/api/houses/229", displayLannister)
+            function displayLannister(data) {
+                console.log(data.name)
+                $('#lannister').click(function() {
+                    $('#name').empty().append(data.name);
+                    $('#words').empty().append(data.words)
+                    $('#titles').empty().append(data.titles)
+                });
+            };
+
+            $.get("https://anapioficeandfire.com/api/houses/17", displayBaratheon)
+            function displayBaratheon(data) {
+                console.log(data.name)
+                $('#baratheon').click(function() {
+                    $('#name').empty().append(data.name);
+                    $('#words').empty().append(data.words)
+                    $('#titles').empty().append(data.titles)
+                });
+            };
+
+        });
+    </script>
+    
+</body>
+</html>
