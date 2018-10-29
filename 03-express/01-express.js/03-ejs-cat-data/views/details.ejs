@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cat Info</title>
+</head>
+<body>
+    
+    <% for (var x in cat_array) { %>
+    <img src="../images/<%=cat_array[x].img%>" alt="cat1" width=250 height=250">
+    <h6>Name: <%= cat_array[x].name %></h6>
+    <h6>Age: <%= cat_array[x].age %></h6>
+    <h6>Favorite Toy: <%= cat_array[x].toy %></h6>
+    <h6>Favorite Foods: <% for (var i in food) { %>
+    <h6><%= food[i] %></h6>
+    <% } %>
+    <% } %>
+</body>
+</html>
