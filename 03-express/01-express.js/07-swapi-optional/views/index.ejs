@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js'></script>
+    <title>Star Wars Wiki</title>
+</head>
+<body>
+    <h2>Star Wars Wiki</h2>
+    <h5>What would you like to know more about?</h5>
+    <button id='peoplebtn'>People</button>
+    <button id='planetsbtn'>Planets</button>
+
+    <ul class='list'></ul>
+    <a href='/previous'>Previous</a>
+    <a href='/all'>Get all</a>
+    <a href='/next'>Next</a>
+
+    <script>
+        $(document).ready(function(){
+            $('#peoplebtn').click(function(){
+                $.get('/people', function(data){
+                    $('.list').empty()
+                    let people = data.results;
+                    for (var person in people){
+                        console.log(people[person].name)
+                        $('.list').append( "<li>" + people[person].name + "</li>" )
+                    }}, 'json');
+            });
+            $('#planetsbtn').click(function(){
+                $.get('/planets', function(data){
+                    $('.list').empty()
+                    let planets = data.results;
+                        for (var planet in planets){
+                            console.log(planets[planet].name)     
+                            $('.list').append( "<li>" + planets[planet].name +"</li>")
+                        }}, 'json');
+            });
+        })
+    </script>
+</body>
+</html>
