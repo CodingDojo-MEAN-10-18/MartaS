@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function(){
+                var socket = io();
+                socket.on('greeting', function (data) {
+                    console.log(data.msg);
+                    socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' });
+                });
+                $('#form').submit(function( data){
+                    data.preventDefault();
+
+                    socket.emit('posting_form', {
+                        name: $('#name').val(),
+                        location: $('#location').val(),
+                        language: $('#language').val(),
+                        comment: $('#comment').val()
+                    });
+                });
+                socket.on('updated_message', function(data){
+                    $('#message').html("You submitted this info:" + JSON.stringify(data.response));
+                })
+                socket.on('random_number', function(data){
+                    $('#number').html('Random number is:' + JSON.stringify(data.response));
+                })
+            });
+        </script>
+    <title>Survey Form Revisited</title>
+</head>
+<body>
+    <h1>It Works</h1>
+    <div id="message"></div>
+    <div id="number"></div>
+    <form action='/result'id="form" method="POST">
+        <p><label for='name' id='name'>Name:</label>
+        <input type='text' name='name'></p>
+
+        <p><label for='location' id='location'>Dojo Location:</label>
+        <select name='location'>
+            <option value='Seattle'>Seattle</option>
+            <option value='San Jose'>San Jose</option>
+            <option value='Mountain View'>Mountain View</option>
+            <option value='Online'>Online</option>
+        </select></p>
+
+
+        <p><label for='language' id='language'>Favorite Language:</label>
+            <select name='language'>
+                <option value='Python'>Python</option>
+                <option value='MEAN'>MEAN</option>
+                <option value='Ruby'>Ruby</option>
+                <option value='C++'>C++</option>
+            </select></p>
+        
+        <p><label for='comment' id='comment'>Comment (optional):</label></p>
+        <p><textarea id='comment' name='comment' rows='10' cols='20'></textarea></p>
+        <p><input type='submit' value="Submit"></p>
+    </form>
+</body>
+</html>
