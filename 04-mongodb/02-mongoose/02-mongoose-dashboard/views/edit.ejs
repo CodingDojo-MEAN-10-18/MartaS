@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Owl</title>
+</head>
+<body>
+    <h1>Edit this owl:</h1>
+    <p>Name: <%= owl.name %>, Color: <%= owl.color %>, Wingspan: <%= owl.wingspan %> </p>
+    <h4><%= owl.color %></h4>
+    <form action='/owls/<%= owl.id %>' method="POST">
+        <label for='name' id='name'>Name:</label>
+        <input type="text" name='name' value='<%= owl.name %>'>
+        <label for='color' id='color'>Color:</label>
+        <input type="text" name="color" value= "<%= owl.color %>">
+        <label for='wingspan' id='wingspan'>Wingspan (inches):</label>
+        <input type="number" name="wingspan" value="<%= owl.wingspan %>">
+        <input type="submit" value="Update Owl">
+    </form>
+    <form action='/owls/destroy/<%= owl._id %>' method='POST'>
+        <button>Delete this owl</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Owl Page</title>
+</head>
+<body>
+    <h1>All the Owls are HERE</h1>
+    <% for (const owl of owls) { %>
+        <p>Name: <%= owl.name %>, Color: <%= owl.color %>, Wingspan: <%= owl.wingspan %> <a href='/owls/edit/<%= owl._id %>'><button>Edit Owl</button></a></p>
+    <% } %>
+    <a href='/new'><button>Add a new owl</button></a>
+
+</body>
+</html>
