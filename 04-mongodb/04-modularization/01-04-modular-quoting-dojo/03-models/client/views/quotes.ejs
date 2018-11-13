@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    #quote {
+        color: gray;
+    }
+    #name {
+        color: blue;
+    }
+    </style>
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Here are the awesome quotes!</h1>
+    <% for (const user of users) { %>
+        <h3 id='quote'>"<%= user.quote %>"</h3>
+        <h4 id='name'>&nbsp;-<%= user.name %> at <%= user.date %></h4>
+    <% } %>
+</body>
+</html>
