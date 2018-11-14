@@ -35,7 +35,7 @@ app.get('/owls/:id', function(request, response) {
 })
 
 app.post('/owls/:id', function(request, response){
-    Owl.update({_id: request.params.id}, request.body, function(error, owl_id) { 
+    Owl.update({_id: request.params.id}, request.body, function(error) { 
             if (error) {console.log(error); }
             response.redirect('/owls/' + request.params.id)
     });
