@@ -12,9 +12,6 @@
         .button_class{
             background-color: lightskyblue;
         }
-        .radio{
-            
-        }
     </style>
 
     <title>Document</title>
@@ -22,66 +19,96 @@
 <body>
     <h2>Trivia Night</h2>
     <h4 id='category_name'></h4>
+    <button type='button' class='button_class' id='button_1'>100</button>
+    <p id='answers_1'></p>
 
-    <label class="container">One
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="container">Two
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="container">Three
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          
-          <label class="container">Four
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <p id='all_info'></p>
-    <button type='button' class='button_class' id='button_1'>100
-        <p id='question'></p>
-        <p><input type='' class='radio'></p> 
-    </button>
-    <button type='button' id='button_2'>200
+    <button type='button' class='button_class' id='button_2'>200</button>
+    <p id='answers_2'></p>
+    
+    <button type='button' class='button_class' id='button_3'>300</button>
+    <p id='answers_3'></p>
+
+    <button type='button' class='button_class' id='button_4'>400</button>
+    <p id='answers_4'></p>
    
-    </button>
-    <button type='button' id='button_3'>300</button>
-    <button type='button' id='button_4'>400</button>
-    <button type='button' id='button_5'>500</button>
-
     <script>
     
         $(document).ready(function(){
             $.get("https://opentdb.com/api.php?amount=5&category=17&difficulty=medium&type=multiple", displayQuestions)
-            var answers_array = []
-            function combineAnswers(data){
-                $(".button_class").append(data.results[0].incorrect_answers, data.results[0].correct_answer)
-            }
+
+            //I have too much repeated code - definitely a more efficient way to do this but functionality is working for purpose of this API assignment
+
             function displayQuestions(data){
-                
+                var question = data.results[0].question
                 $('#category_name').append(data.results[0].category)
                 $('#button_1').click(function(){
+                    var answers_array = []   
                     $('#button_1').html(data.results[0].question)
-                    $('#button_1').append(data.results[0].incorrect_answers)
-                    $('.button_class').css("")
-                    //$('.button_class').html("radio")
+
+                    incorrect_answers = data.results[0].incorrect_answers
+                    for (let answer in incorrect_answers) {
+                        answers_array.push(incorrect_answers[answer])
+                    }
+                    answers_array.push(data.results[0].correct_answer)
+                    console.log(answers_array)
+                    $('#answers_1').html()
+                    for (let i in answers_array) {                   
+                        $('#answers_1').append('<p><input type="radio">' + answers_array[i] + '</p>')
+                    }
                 })
-                //console.log(data.results[0].category);
-                //for (var i = 0; i < data.results.length; i++)
-                    $('#all_info').append(data.results[i])
-                };
-            })
-    //$('#button_1').click(function() {
-//    $('#button_1').append(data[0].category);
-//});
+
+                $('#button_2').click(function(){
+                    var answers_array = []
+                    $('#button_2').html(data.results[1].question)
+
+                    incorrect_answers = data.results[1].incorrect_answers
+                    for (let answer in incorrect_answers) {
+                        answers_array.push(incorrect_answers[answer])
+                    }
+                    answers_array.push(data.results[1].correct_answer)
+                    console.log(answers_array)
+                    $('#answers_2').html()
+                    for (let i in answers_array) {                   
+                        $('#answers_2').append('<p><input type="radio">' + answers_array[i] + '</p>')
+                    }
+                })
+
+                $('#button_3').click(function(){
+                    var answers_array = []
+                    $('#button_3').html(data.results[2].question)
+
+                    incorrect_answers = data.results[2].incorrect_answers
+                    for (let answer in incorrect_answers) {
+                        answers_array.push(incorrect_answers[answer])
+                    }
+                    answers_array.push(data.results[2].correct_answer)
+                    console.log(answers_array)
+                    $('#answers_3').html()
+                    for (let i in answers_array) {                   
+                        $('#answers_3').append('<p><input type="radio">' + answers_array[i] + '</p>')
+                    }
+                })
+
+                 $('#button_4').click(function(){
+                    var answers_array = []
+                    $('#button_4').html(data.results[3].question)
+
+                    incorrect_answers = data.results[3].incorrect_answers
+                    for (let answer in incorrect_answers) {
+                        answers_array.push(incorrect_answers[answer])
+                    }
+                    answers_array.push(data.results[3].correct_answer)
+                    console.log(answers_array)
+                    $('#answers_4').html()
+                    for (let i in answers_array) {                   
+                        $('#answers_4').append('<p><input type="radio">' + answers_array[i] + '</p>')
+                    }
+                })
+
+            };
+        })   
+
     </script>
-
-
 
 </body>
 </html>
