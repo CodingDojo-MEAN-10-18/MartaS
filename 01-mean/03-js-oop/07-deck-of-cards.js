@@ -5,11 +5,7 @@ class Card {
         this.value = value;
         this.card = name + " of " + suit + " - value of " + value;
     }
-        show(){
-            //console.log(`The card pulled is: Suit: ${this.suit}, String: ${this.string}, Value: ${this.value}`)
-        return this;
-        }
-    }
+}
 
 
 class Deck {
@@ -18,10 +14,8 @@ class Deck {
     }
     
     createDeck(){
-        //this.deck = []
         const suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
         let name = '';
-        //names = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
         const values  = [1,2,3,4,5,6,7,8,9,10,11,12,13];
         for (const suit of suits) {
             for (const value of values){
@@ -52,8 +46,6 @@ class Deck {
                 if (value == 13){
                     name = "King";}
                 this.deck.push(new Card(suit, name, value))
-                //this.deck.push(`${name} (${value}) of ${suit}`);
-                    //console.log(this.name)
                 
             }
         }
@@ -75,20 +67,42 @@ class Deck {
     }
 
     dealCard(){
-        this.deck.pop();
-        return this;
+        return this.deck.pop();
     }
 
 };
+
+class Player{
+    constructor(name) {
+        this.name = name;
+        this.hand = []
+    }
+
+    take(deck) {
+        this.hand.push(deck.dealCard());
+        return this;   
+    }
+    discard() {
+        this.hand.pop();
+        return this;
+    }
+}
 
 const deck1 = new Deck();
 deck1.createDeck();
 console.log(deck1);
 deck1.shuffle();
 console.log(deck1);
-deck1.dealCard();
-console.log(deck1);
+randomCard = deck1.dealCard();
+console.log(randomCard);
 
+
+const player1 = new Player('Marta');
+console.log(player1)
+player1.take(deck1).take(deck1)
+console.log('PLAYERS HAND:', player1.hand)
+player1.discard()
+console.log('DISCARDED CARD:', player1.hand)
 
 deck1.reset();
-console.log(deck1);
+//console.log(deck1);
