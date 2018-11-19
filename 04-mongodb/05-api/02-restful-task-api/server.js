@@ -6,6 +6,7 @@ const path = require('path')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static(__dirname + './public/dist/public'));
 
 require('./server/config/database')
 require('./server/config/routes')(app)
