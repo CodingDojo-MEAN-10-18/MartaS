@@ -1,0 +1,12 @@
+
+ <!-- {{ form.value | json }} -->
+  <h1>
+    Welcome! Add a new task:
+  </h1>
+  <form (submit)="onSubmit($event, form)" #form="ngForm">
+    <label for="">Task:</label>
+    <input type='text' name='title' [(ngModel)]="task.title" />
+    <label for="">Description:</label>
+    <input type='text' name='description' [(ngModel)]="task.description" />
+    <button>Submit</button>
+  </form>

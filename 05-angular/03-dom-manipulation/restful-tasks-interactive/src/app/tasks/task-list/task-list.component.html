@@ -1,0 +1,12 @@
+<app-task-new (createTask)='onCreate($event)'></app-task-new> <!-- triggering onCreate in task-list-->
+<section *ngIf="tasks?.length">
+<ul><!--note below task passed to onSelect is the task in that particular for loop at that time-->
+  <li *ngFor="let task of tasks">
+      <strong>Task:</strong> {{ task.title }}
+      <button (click)="onSelect(task)">Show Description</button>
+  </li>
+</ul>
+</section>
+
+<app-task-detail [task]="selectedTask"></app-task-detail>
+
