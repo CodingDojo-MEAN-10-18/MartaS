@@ -8,5 +8,8 @@ export class HttpService {
   constructor(private http: HttpClient) { }
   getAuthors() {
     return this.http.get('/authors');
-    }
+  }
+  CreateAuthor(author) {
+    return this.http.post('/authors', author);
+  }
 }

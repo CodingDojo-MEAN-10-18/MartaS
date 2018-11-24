@@ -1,5 +1,5 @@
 
-const { authorController } = require('../controllers');
+// const { authorController } = require('../controllers');
 /*
 const router = require('express').Router();
 
@@ -17,10 +17,11 @@ module.exports = router
 
 
 module.exports = function (app) {
-  app.get('/', authors.index),
-    app.get('/:id/', authors.show),
-    app.post('/', authors.create),
-    app.put('//:id', authors.update),
-    app.delete('/:id', authors.destroy);
-}
+  app.get('/authors', authors.index),
+    app.get('/authors/:id/', authors.show),
+    app.post('/authors', authors.create),
+    app.put('/authors/:id', authors.update),
+    app.delete('/authors/:id', authors.destroy);
+};
+
 
