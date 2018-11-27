@@ -1,0 +1,6 @@
+{
+  "/weather": {
+    "target": "http://localhost:5100",
+    "secure": false
+  }
+}
