@@ -1,0 +1,19 @@
+
+<div *ngIf='errors.length'>
+    <ul>
+      <li *ngFor='let error of errors'>{{ error }}</li>
+    </ul>
+  </div>
+<h2>Favorite Authors</h2>
+<a routerLink='/'>Home</a>
+<legend>Edit this author</legend>
+
+
+<fieldset>
+  <form (submit)="onEdit($event, form)" #form="ngForm">
+    <label for=''>Name:</label>
+    <input type='text' name="author?.name" [(ngModel)]="author.name" >
+    <button>Submit</button>
+    <a routerLink=''>Cancel</a>
+  </form>
+</fieldset>
