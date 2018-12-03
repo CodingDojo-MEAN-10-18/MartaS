@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secrets Login</title>
+</head>
+<body>
+    <h1>Welcome to the Secret Stash</h1>
+    <h2>Login or Register to begin spilling your secrets...</h2>
+    <% JSON.stringify(messages) %>
+    <% if(messages.registration) { %>
+        <% for (var x of messages.registration) { %>
+        <h4><%= x %></h4>
+        <% } %>
+    <% } %>
+    <h2>Login</h2>
+    <fieldset>
+        <form action='/login' method="POST">
+            <p><label for='email' id='email'>Email: </label>
+            <input type='text' name='email'></p>
+            <p><label for='password' id='password'>Password: </label>
+            <input type='text' name='password'></p>
+            <input type='submit' value='Login'>
+        </form>
+    </fieldset>
+
+    <h2>Register</h2>
+    <fieldset>
+        <form action='/register' method="POST">
+            <p><label for='fname' id='fname'>First Name: </label>
+            <input type='text' name='fname'></p>
+            <p></p><label for='lname' id='lname'>Last Name: </label>
+            <input type='text' name='lname'></p>
+            <p></p><label for='email' id='email'>Email: </label>
+            <input type='text' name='email'></p>
+            <p></p><label for='password' id='password'>Password: </label>
+            <input type='password' name='password'></p>
+            <input type='submit' value="Register">
+        </form>
+    </fieldset>
+
+</body>
+</html>
