@@ -1,0 +1,10 @@
+<section>
+  <fieldset *ngFor="let bike of bikes">
+    <p>{{ bike.title }}</p>
+    <p>{{ bike.description }}</p>
+    <p>${{ bike.price }}</p>
+    <p>{{ bike.location }}</p>
+    <button>if creator, Delete</button>
+    <button>if not creator, Contact</button>
+  </fieldset>
+</section>

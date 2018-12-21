@@ -1,0 +1,18 @@
+<h2>Favorite Authors</h2>
+<a routerLink='new'>Add an author</a>
+<section>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Actions Available</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let author of authors" >
+        <td>{{ author.name }}</td>
+        <a [routerLink]="[author._id]">Edit</a>
+        <a routerLink='quotes'>View Quotes</a>
+        <!-- <td><button (click)="onDelete(author?._id)">Delete</button></td> -->
+      </tr>
+    </tbody>
+  </table>
+</section>

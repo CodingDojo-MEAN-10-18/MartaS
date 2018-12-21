@@ -1,0 +1,16 @@
+<div *ngIf="loginErrors.length">
+  <ul class="alert alert-danger">
+    <li *ngFor="let error of loginErrors"> {{ error }} </li>
+  </ul>
+  </div>
+
+  <fieldset>
+    <legend>Login</legend>
+    <form (submit)="onSubmit(login.value)" #login="ngForm">
+      <label for="">Email</label>
+      <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email">
+      <label for="">Password</label>
+      <input type="text" name="password" #password="ngModel" [(ngModel)]="user.password" minlength="4">
+      <button>Login</button>
+    </form>
+  </fieldset>

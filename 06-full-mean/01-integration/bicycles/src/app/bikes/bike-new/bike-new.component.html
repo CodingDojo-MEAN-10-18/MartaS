@@ -1,0 +1,41 @@
+<!-- <div *ngIf='errors.length'>
+  <ul>
+    <li *ngFor="let error of errors">{{ error }}</li>
+  </ul>
+</div> -->
+
+<h5>Create Listing</h5>
+<form (submit)="onSubmit($event, form)" #form="ngForm">
+  <label for="">Title</label>
+  <input type="text" name="title" [(ngModel)]="bike.title" />
+  <label for="">Description</label>
+  <input type="text" name="description" [(ngModel)]="bike.description" />
+  <label for="">Price: $</label>
+  <input type="text" name="price" [(ngModel)]="bike.price" />
+  <label for="">Location</label>
+  <input type="text" name="location" [(ngModel)]="bike.location" />
+  <button>Create</button>
+</form>
+
+<fieldset *ngFor="let bike of mylist">
+  <p>{{ bike.title }}</p>
+  <p>{{ bike.description }}</p>
+  <p>${{ bike.price }}</p>
+  <p>{{ bike.location }}</p>
+  <!-- <a [routerLink]="[bike._id]">Edit Bike</a> -->
+</fieldset>
+<!--
+<fieldset *ngFor="let bike of mylist">
+    <form (submit)="onEdit($event, form)" #form="ngForm">
+      <label for=''>Title:</label>
+      <input type='text' name="bike?.title" [(ngModel)]="bike.title" >
+      <label for=''>Description:</label>
+      <input type='text' name="bike?.description" [(ngModel)]="bike.description" >
+      <label for=''>Price:</label>
+      <input type='text' name="bike?.price" [(ngModel)]="bike.price" >
+      <label for=''>Location:</label>
+      <input type='text' name="bike?.location" [(ngModel)]="bike.location" >
+      <button>Submit</button>
+      <a routerLink=''>Cancel</a>
+    </form>
+  </fieldset> -->
